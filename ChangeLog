@@ -1,0 +1,53 @@
+version <next>
+
+version 1.0.1:
+- Fix a couple of compile warnings in Java 1.5
+
+- Tidy up exception handling when loading Robot controllers a bit (a lot
+  more needs to be done). User friendly error messages are now displayed
+  for a few common cases.
+
+- Loading Robot controllers from the CLI now selects the correct controller
+  once the GUI starts up.
+
+version 1.0:
+- Add Javadocs for IRobot and remove the methods setTargetLocation() and
+  setMaze() from the interface. Students writing controllers shouldn't have 
+  access to either of those methods.
+
+- Add command line options to preload controllers and saved mazes.
+  Refactoring to allow this.
+
+- Add keyboard shortcuts for practically everything.
+
+- Add editable fields for the width and height in the Advanced settings panel.
+
+- Fix the broken list views, and stackdumps on MacOS X.
+
+- Fix the intermittent freeze on startup bug.
+
+- Add parameter validation for IRobot methods.
+
+- Make accessors that return points return copies of those points, so that
+  client code can't modify the internal state of the maze software.
+
+- Update Kunststoff L&F to version 2.0.2.
+
+- Make the MazeGridPanel always resize the maze so that the cells are square
+
+- Remove the Make Generator feature. Load/save maze works better, and doesn't
+  rely on Sun's compiler classes to be present
+
+- Tweak save maze button to only be enabled when there's a maze to save
+
+- Add John Fearnley's loopy maze generator
+
+- Tweak about box and copyright info
+
+- Add GPL license information to source code
+
+- Dragging the robot/target outside the maze doesn't generate exceptions
+
+- Double clicking the robot rotates it clockwise 90 degrees.
+
+- Add load/save functionality

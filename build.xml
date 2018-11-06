@@ -1,0 +1,46 @@
+<project name="warwickmaze" default="dist" basedir=".">
+    <property name="src" value="src"/> 
+    <property name="bin" value="bin"/>
+    <property name="dist" value="dist"/>
+    <property name="lib"   value="lib"/>
+    
+    <target name="init">
+    	<mkdir dir="${dist}"/>
+    	<mkdir dir="${bin}"/>
+    </target>
+     
+    <target name="compile" depends="init">
+        <javac srcdir="${src}" destdir="${bin}" includes="**/*.java">
+	    	<classpath>
+    	  		<pathelement location="${lib}/kunststoff.jar" />
+    	  		<pathelement location="${lib}/java-getopt.jar" />
+	    	</classpath>
+    	</javac>
+    </target>
+    
+    <target name="dist" depends="compile">
+    	<unzip src="${lib}/kunststoff.jar" dest="${bin}" />
+    	<unzip src="${lib}/java-getopt.jar" dest="${bin}" />
+    	<copy file="${src}/mazeicon.gif" overwrite="true" tofile="${bin}/mazeicon.gif"/>
+    	<tstamp/>
+    	<propertyfile file="${bin}/.courseware.properties" comment="Courseware properties">
+			<entry key="build" value="${TODAY}"/>
+			<entry key="version" value="1.0.1"/>
+			<entry key="site" value="http://warwickmaze.sourceforge.net/"/>
+		</propertyfile>
+	    <jar update="false" destfile="${dist}/warwickmaze.jar" basedir="${bin}" includes="**/*.*">
+	    	<manifest>
+				<attribute name="Sealed" value="true"/>
+	    		<attribute name="Main-Class" value="uk.ac.warwick.dcs.maze.AppLauncher" />
+				<attribute name="Class-Path" value="tools.jar" />
+				<attribute name="Built-By" value="${user.name}"/>
+				<attribute name="Build-Number" value="${DSTAMP}"/>
+	    	</manifest>
+	    </jar>
+  	</target>
+    
+    <target name="clean" depends="init">
+    	<delete dir="${bin}" />
+    	<delete dir="${dist}" />
+    </target>
+</project>

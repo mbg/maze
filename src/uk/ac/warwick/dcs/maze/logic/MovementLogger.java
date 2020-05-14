@@ -13,6 +13,22 @@ public class MovementLogger {
     private long movesRight = 0;
     private long movesBackwards = 0;
 
+    public long getMovesForward() {
+        return this.movesForward;
+    }
+
+    public long getMovesLeft() {
+        return this.movesLeft;
+    }
+
+    public long getMovesRight() {
+        return this.movesRight;
+    }
+
+    public long getMovesBackwards() {
+        return this.movesBackwards;
+    }
+
     public MovementLogger() {
 
     }
